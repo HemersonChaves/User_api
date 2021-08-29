@@ -19,7 +19,7 @@ O template está disponível na seguinte URL:
 
 Agora navegue até a pasta criada, abra no Visual Studio Code e execute o comando `yarn` no seu terminal para instalar todas as dependências. A estrutura do seu projeto deve estar assim:
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1fae291a-6a61-45af-8819-775d34e91c76/Untitled.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1fae291a-6a61-45af-8819-775d34e91c76/Untitled.png)
+![image](https://user-images.githubusercontent.com/5596624/131266062-390068c1-981b-424f-a14c-1f96b23317f9.png)
 
 ## Rotas da aplicação
 
@@ -53,10 +53,10 @@ Para esse desafio, temos os seguintes testes:
 
     Para que esse teste passe, você deve completar o código do model de usuários que está em **src/modules/users/model/User.ts**.
     O usuário deve ter as seguintes propriedades:
-
+    
 ```json
 {
-	id: string;
+  id: string;
 
   name: string;
 
