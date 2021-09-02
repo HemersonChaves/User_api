@@ -1,4 +1,4 @@
-import { IUsersRepository } from '../../repositories/IUsersRepository';
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 interface IRequest {
     name: string;
@@ -11,7 +11,7 @@ class CreateUserUseCase {
     execute({ email, name }: IRequest): void {
         const userAlreadyExists = this.usersRepository.findByName(name);
         if (userAlreadyExists) {
-            throw new Error('User already exists');
+            throw new Error("User already exists");
         }
         this.usersRepository.create({ name, email });
     }
