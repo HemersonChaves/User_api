@@ -15,6 +15,9 @@ class User {
         if (!this.created_at) {
             this.created_at = new Date();
         }
+        if (!this.admin) {
+            this.admin = false;
+        }
     }
 }
 
