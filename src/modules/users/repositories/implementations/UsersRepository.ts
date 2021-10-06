@@ -40,11 +40,10 @@ class UsersRepository implements IUsersRepository {
     }
 
     turnAdmin(receivedUser: User): User {
-        const user = this.findById(receivedUser.id);
-        if (user) {
-            if (!user.admin) {
-                user.admin = true;
-            }
+        if (!receivedUser.admin) {
+            const admin = true;
+            Object.assign(receivedUser, { admin });
+            this.users.push(receivedUser);
         }
         return receivedUser;
     }
