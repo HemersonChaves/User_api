@@ -12,7 +12,7 @@ class ShowUserProfileController {
             return response.status(200).json(user);
         } catch (error) {
             return response
-                .status(400)
+                .status(404)
                 .json({ error: "Nao pode criar um usuario" });
         }
     }
