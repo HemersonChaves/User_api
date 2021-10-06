@@ -1,7 +1,7 @@
 import request from "supertest";
 import { v4 } from "uuid";
 
-import { app } from "../routes/index";
+import { app } from "../index";
 import { UsersRepository } from "../modules/users/repositories/implementations/UsersRepository";
 
 describe("[POST] /users", () => {
