@@ -13,7 +13,7 @@ class CreateUserController {
             return response.status(201).send(user);
         } catch (error) {
             return response
-                .status(500)
+                .status(400)
                 .json({ error: "Nao pode criar um usuario" });
         }
     }
