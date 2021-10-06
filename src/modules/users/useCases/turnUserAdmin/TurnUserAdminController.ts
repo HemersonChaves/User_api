@@ -13,7 +13,7 @@ class TurnUserAdminController {
             return response.status(201).send(user);
         } catch (error) {
             return response
-                .status(400)
+                .status(404)
                 .json({ error: "Nao pode criar um usuario" });
         }
     }
