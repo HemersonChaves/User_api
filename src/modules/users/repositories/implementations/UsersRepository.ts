@@ -40,7 +40,7 @@ class UsersRepository implements IUsersRepository {
     }
 
     turnAdmin(receivedUser: User): User {
-         const user = this.findById(receivedUser.id);
+        const user = this.findById(receivedUser.id);
         if (user) {
             if (!user.admin) {
                 user.admin = true;
