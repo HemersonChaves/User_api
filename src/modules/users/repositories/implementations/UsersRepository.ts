@@ -43,7 +43,6 @@ class UsersRepository implements IUsersRepository {
         if (!receivedUser.admin) {
             const admin = true;
             Object.assign(receivedUser, { admin });
-            this.users.push(receivedUser);
         }
         return receivedUser;
     }
