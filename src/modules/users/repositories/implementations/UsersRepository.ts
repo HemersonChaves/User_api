@@ -40,11 +40,10 @@ class UsersRepository implements IUsersRepository {
     }
 
     turnAdmin(receivedUser: User): User {
-
-        Object.assign(receivedUser, {
-            admin: true,
-            updated_at: new Date(),
-        });
+        if (!receivedUser.admin) {
+            const admin = true;
+            Object.assign(receivedUser, { admin });
+        }
         return receivedUser;
     }
 

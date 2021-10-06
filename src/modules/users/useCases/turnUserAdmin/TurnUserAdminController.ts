@@ -6,10 +6,16 @@ class TurnUserAdminController {
     constructor(private turnUserAdminUseCase: TurnUserAdminUseCase) {}
 
     handle(request: Request, response: Response): Response {
-        const { user_id } = request.params;
+        try {
+            const { user_id } = request.params;
 
-        this.turnUserAdminUseCase.execute({ user_id });
-        return response.status(201).send();
+            const user = this.turnUserAdminUseCase.execute({ user_id });
+            return response.status(201).send(user);
+        } catch (error) {
+            return response
+                .status(400)
+                .json({ error: "Nao pode criar um usuario" });
+        }
     }
 }
 
