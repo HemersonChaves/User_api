@@ -1,0 +1,330 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Desafio Chapter II Rocketseat",
+        "description": "Api de acesso a um crud de usuários",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Hemerson Chaves email:hemersonchaves20@hotmail.com",
+            "email": "hemersonchaves20@hotmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Cria um novo usuário",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "rocketseat",
+                                    "description": "rocketseat@email.com"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Operação realizada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string",
+                                            "example": false
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "enum": [
+                                                "a"
+                                            ],
+                                            "example": "lkj34o23d0nxsaijdwiouhdq8"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "rocketseat"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "rocketseat@email.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Email já esta sendo ultilizado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "this email is already in use"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Retorna todos os usuários",
+                "description": "Somente o usuário *admin* pode acessar",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "user_id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operação realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string",
+                                            "example": false
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "enum": [
+                                                "a"
+                                            ],
+                                            "example": "lkj34o23d0nxsaijdwiouhdq8"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "rocketseat"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "rocketseat@email.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Usuarios sem permissão ou não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "You need to be an administrator to list all users"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Retorna um usuáro específico",
+                "description": "Somente usuário admin pode acessar",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "user_id ",
+                        "required": true,
+                        "description": "ID do usuário",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Operação realizada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string",
+                                            "example": false
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "enum": [
+                                                "a"
+                                            ],
+                                            "example": "lkj34o23d0nxsaijdwiouhdq8"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "rocketseat"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "rocketseat@email.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-03-01T22:10:32.992z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Usuário não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "You need to be an administrator to list all users"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Torna admin um usuário",
+                "description": "Torna admin um usuário",
+                "responses": {
+                    "201": {
+                        "description": "Operação realizada com sucesso.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "string"
+                                        },
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                            
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                            
+                                        },
+                                        "updated_at": {
+                                            "type": "string"
+                                            
+                                        }
+                                    },
+                                    "example": [
+                                        {
+                                          "admin": true,
+                                          "id": "c5c739c0-4576-47a4-82f5-8b314d2eba21",
+                                          "name": "João",
+                                          "email": "joao@email.com",
+                                          "created_at": "2021-03-21T20:32:40.759Z",
+                                          "updated_at": "2021-03-21T20:32:40.759Z"
+                                        },
+                                        {
+                                          "admin": false,
+                                          "id": "d32e9e4e-43cd-4f64-a393-4f0158c9e348",
+                                          "name": "Maria",
+                                          "email": "maria@email.com",
+                                          "created_at": "2021-03-10T23:14:43.081Z",
+                                          "updated_at": "2021-03-10T23:14:43.081Z"
+                                        }
+                                      ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Usuário não encontrado.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
